@@ -1,0 +1,52 @@
+generated: '2026-07-18'
+method: searched
+source: https://academy.creatio.com/docs/developer/integrations_and_api/authentication/authentication_basics/overview
+docs: https://academy.creatio.com/docs/developer/integrations_and_api/authentication/authentication_basics/overview
+summary:
+  types: [http, oauth2, cookie]
+  api_key_in: []
+  oauth2_flows: [clientCredentials]
+  recommended: forms-cookie
+  notes: >-
+    Creatio is a multi-tenant platform; the API host is per instance
+    (https://<instance>.creatio.com). All external requests to OData and
+    DataService require authentication. Forms (cookie) authentication is the
+    recommended method for service-to-service integration; OAuth 2.0 is the
+    recommended method for integrated applications.
+schemes:
+  - name: forms-cookie
+    type: cookie
+    scheme: forms-authentication
+    description: >-
+      Cookie-based forms authentication via the AuthService.svc web service.
+      POST credentials to /ServiceModel/AuthService.svc/Login, then send the
+      returned cookies (.ASPXAUTH, BPMLOADER, BPMCSRF, UserName) on subsequent
+      requests. The BPMCSRF cookie value must also be echoed in the BPMCSRF
+      request header, and requests set the ForceUseSession: true header.
+    endpoints:
+      login: /ServiceModel/AuthService.svc/Login
+    headers: [BPMCSRF, ForceUseSession]
+    cookies: ['.ASPXAUTH', BPMLOADER, BPMCSRF, UserName]
+    recommended: true
+    source: https://academy.creatio.com/docs/developer/integrations_and_api/authentication/authentication_basics/overview
+  - name: oauth2
+    type: oauth2
+    scheme: clientCredentials
+    description: >-
+      OAuth 2.0 authorization for integrated applications. An OAuth client
+      (client id + client secret) is registered in Creatio's Identity Service,
+      which issues bearer access tokens presented on API requests. Grant type
+      is client credentials (server-to-server). The token endpoint lives on the
+      Identity Service configured for the instance.
+    docs: https://academy.creatio.com/documents?id=2396
+    source: https://academy.creatio.com/docs/developer/integrations_and_api/authentication/authentication_basics/overview
+  - name: basic
+    type: http
+    scheme: basic
+    description: HTTP Basic authentication is supported as an available authentication type.
+    source: https://academy.creatio.com/docs/developer/integrations_and_api/authentication/authentication_basics/overview
+  - name: anonymous
+    type: none
+    scheme: anonymous
+    description: Anonymous access is supported for web services explicitly configured to allow it.
+    source: https://academy.creatio.com/docs/developer/integrations_and_api/authentication/authentication_basics/overview
