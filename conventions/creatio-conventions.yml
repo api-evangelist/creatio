@@ -1,0 +1,55 @@
+generated: '2026-07-18'
+method: searched
+source: https://academy.creatio.com/docs/developer/integrations_and_api/data_services/odata/overview
+docs:
+  odata: https://academy.creatio.com/docs/developer/integrations_and_api/data_services/odata/overview
+  dataservice: https://academy.creatio.com/docs/developer/integrations_and_api/data_services/dataservice/overview
+summary: >-
+  Cross-cutting request/response semantics for the Creatio data-access APIs
+  (OData 4/3 and DataService). Creatio does not document an idempotency-key
+  contract, so no Idempotency pointer is emitted.
+authentication:
+  style: forms-cookie or oauth2
+  headers: [BPMCSRF, ForceUseSession]
+  see: authentication/creatio-authentication.yml
+pagination:
+  odata:
+    style: query-option
+    params: ['$top', '$skip', '$skiptoken']
+    notes: >-
+      OData server-driven paging returns a nextLink using $skiptoken;
+      client-driven paging uses $top and $skip. Ordering via $orderby.
+  dataservice:
+    style: row-window
+    params: [IsPageable, RowCount, ConditionalValues]
+    notes: SelectQuery paginates by setting IsPageable=true with RowCount (-1 = all).
+filtering:
+  odata:
+    params: ['$filter', '$select', '$expand', '$orderby', '$count', '$value']
+  dataservice:
+    params: [Filters, Columns, OperationType]
+metadata:
+  odata: GET /0/odata/$metadata returns an XML (EDMX) metadata document; GET /0/odata/ lists collections.
+batch:
+  odata:
+    supported: true
+    max_subrequests: 100
+    endpoint: POST /0/odata/$batch
+  dataservice:
+    supported: true
+    query_type: BatchQuery
+serialization:
+  odata: [json]
+  dataservice: [json, xml, html, csv, jsv]
+limits:
+  max_response_rows: 20000
+  note: Maximum entity row count defaults to 20,000 (configurable in Web.config).
+versioning:
+  see: lifecycle/creatio-lifecycle.yml
+error_envelope:
+  odata: OData error payload (error.code, error.message) on 4xx/5xx.
+  dataservice: >-
+    DataService responses include a success flag and, on failure, an errorInfo
+    object (message, errorCode, stackTrace) in the reply body.
+rate_limit_signaling:
+  documented: false

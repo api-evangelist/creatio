@@ -1,0 +1,21 @@
+generated: '2026-07-18'
+method: searched
+source: https://academy.creatio.com/docs
+versioning:
+  scheme: platform-release
+  current: '8.x'
+  notes: >-
+    Creatio versions the platform (currently the 8.x line, e.g. 8.2 Quantum /
+    8.3 releases) rather than versioning the OData/DataService HTTP surface. The
+    OData protocol version (3 vs 4) is selected by endpoint path.
+  docs: https://academy.creatio.com/docs
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No formal public API deprecation policy or RFC 8594 Sunset/Deprecation header support was found.
+sla:
+  url: https://www.creatio.com/services/support/options
+  uptime_target: null
+status_page: null
+roadmap: https://www.creatio.com/product/roadmap
+deprecated_operations: []

@@ -1,0 +1,32 @@
+generated: '2026-07-18'
+method: searched
+source: live probes of Creatio hosts
+host: https://www.creatio.com
+documents:
+  - path: /.well-known/security.txt
+    status: 403
+    file: null
+    note: WAF-blocked (403), not served
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+other_hosts:
+  - host: https://academy.creatio.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 403
+      - path: /.well-known/openid-configuration
+        status: 404
+  - host: https://identity.creatio.com
+    documents:
+      - path: /.well-known/openid-configuration
+        status: 404

@@ -1,0 +1,27 @@
+generated: '2026-07-18'
+method: searched
+source: https://academy.creatio.com/docs/developer/integrations_and_api/data_services/odata/overview
+standards:
+  - id: odata-v4
+    conforms: true
+    evidence: >-
+      Creatio exposes an OData 4 service at /0/odata (and /odata) with an EDMX
+      $metadata document; OData 4 is the recommended protocol per the docs.
+  - id: odata-v3
+    conforms: true
+    evidence: >-
+      Legacy OData 3 endpoint at /0/ServiceModel/EntityDataService.svc.
+  - id: oauth2
+    conforms: true
+    evidence: >-
+      OAuth 2.0 authorization (client-credentials) via the Creatio Identity
+      Service for integrated applications.
+  - id: rest
+    conforms: true
+    evidence: DataService is a RESTful web service over HTTP POST query endpoints.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors use OData / DataService native error envelopes, not application/problem+json.
+  - id: pagination
+    conforms: true
+    evidence: OData $top/$skip/$skiptoken server- and client-driven paging; DataService RowCount paging.
