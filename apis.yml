@@ -36,7 +36,7 @@ x-tier: enriched
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-18'
+modified: '2026-08-13'
 tags:
 - Company
 - Saas
@@ -90,6 +90,47 @@ apis:
   properties:
   - type: Documentation
     url: https://academy.creatio.com/docs/developer/integrations_and_api/data_services/dataservice/overview
+- name: Creatio Business Process Service
+  description: >-
+    ProcessEngineService.svc runs Creatio business processes from an external
+    application over HTTP. Execute() runs a process by schema name, passing
+    incoming parameters and returning the execution result; ExecProcElByUId()
+    executes a single element of an already-running process. Requires the
+    ForceUseSession and BPMCSRF headers alongside the authenticated session.
+  humanURL: https://academy.creatio.com/docs/developer/integrations_and_api/business_process_service
+  baseURL: https://mycreatio.com/0/ServiceModel/ProcessEngineService.svc
+  x-baseURL-note: >-
+    Multi-tenant; real base is
+    https://<your-instance>.creatio.com/0/ServiceModel/ProcessEngineService.svc.
+    mycreatio.com is Creatio's own documentation example host.
+  tags:
+  - Workflow Automation
+  - Business Process Management
+  - REST
+  properties:
+  - type: Documentation
+    url: https://academy.creatio.com/docs/developer/integrations_and_api/business_process_service
+- name: Creatio Webhook Service
+  description: >-
+    Inbound webhook receiver. Lets an external app push data into Creatio in
+    real time over an authenticated POST, writing a record into a target object
+    named by the EntityName parameter. Contact, Lead, Order and Submitted form
+    are supported out of the box; more objects can be enabled. Secured with
+    OAuth 2.0 — configured automatically on cloud instances, manually on-site.
+    Direction is inbound only: Creatio publishes no outbound event catalog.
+  humanURL: https://academy.creatio.com/guides/no-code-customization/base-integrations/webhook-service-integration/overview
+  baseURL: https://mycreatio.com/
+  x-baseURL-note: >-
+    Creatio does not publish a fixed webhook path. The URL is generated per
+    object and retrieved from the instance UI ("Get the Webhook URL"), so only
+    the per-instance host is recordable.
+  tags:
+  - Webhooks
+  - Integration
+  - CRM
+  properties:
+  - type: Documentation
+    url: https://academy.creatio.com/guides/no-code-customization/base-integrations/webhook-service-integration/overview
 common:
 - type: Website
   url: https://www.creatio.com/
@@ -107,16 +148,14 @@ common:
   url: https://www.creatio.com/services/support/options
 - type: Blog
   url: https://www.creatio.com/blog
-- type: Roadmap
-  url: https://www.creatio.com/product/roadmap
 - type: Pricing
   url: https://www.creatio.com/products/pricing
 - type: SignUp
   url: https://www.creatio.com/trial
 - type: TermsOfService
-  url: https://www.creatio.com/legal/terms-of-use
+  url: https://www.creatio.com/legal
 - type: PrivacyPolicy
-  url: https://www.creatio.com/legal/privacy-policy
+  url: https://www.creatio.com/privacy-policy
 - type: Marketplace
   url: https://marketplace.creatio.com/
 - type: Community
@@ -127,16 +166,69 @@ common:
   url: conventions/creatio-conventions.yml
 - type: Conformance
   url: conformance/creatio-conformance.yml
+- type: Compliance
+  url: security/creatio-trust-center.yml
+- type: TrustCenter
+  url: security/creatio-trust-center.yml
 - type: Lifecycle
   url: lifecycle/creatio-lifecycle.yml
+- type: ChangeLog
+  url: changelog/creatio-changelog.yml
 - type: DomainSecurity
   url: security/creatio-domain-security.yml
-- type: WellKnown
-  url: well-known/creatio-well-known.yml
 - type: LLMsTxt
   url: llms/creatio-llms.txt
+- type: Packages
+  url: packages/creatio-packages.yml
+- type: SDKs
+  url: packages/creatio-packages.yml
+- type: Plans
+  url: plans/creatio-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/creatio-rate-limits.yml
+- type: Webhooks
+  url: asyncapi/creatio-webhooks.yml
+- type: ErrorCatalog
+  url: errors/creatio-error-codes.yml
+x-pointers-deliberately-absent:
+  note: >-
+    Recorded so a later round does not "helpfully" re-add a pointer that would
+    credit Creatio with something it does not publish.
+  WellKnown: >-
+    Removed 2026-08-13. Every /.well-known/* path on every Creatio host returns
+    404, or 403 from the WAF. well-known/creatio-well-known.yml documents an
+    absence and must not score as a presence.
+  Roadmap: >-
+    Removed 2026-08-13. https://www.creatio.com/product/roadmap returns 404 and
+    no roadmap page exists in the 1,618-URL site sitemap.
+  StatusPage: >-
+    Not emitted. status.creatio.com is 404 and creatio.statuspage.io is an
+    unclaimed subdomain that 302s to Atlassian's marketing page.
+  Deprecation: Not emitted. Creatio publishes no API deprecation policy.
+  Security: >-
+    Not emitted. No vulnerability disclosure policy, security.txt (403,
+    WAF-blocked) or bug bounty program was found.
+  MCPServer: >-
+    Not emitted. Creatio is an MCP CLIENT — AI Studio connects to third-party
+    MCP servers. Creatio ships no MCP server. See mcp/creatio-mcp.yml.
+  AgentCard: >-
+    Not emitted. /.well-known/agent-card.json and /.well-known/agent.json return
+    404 on every host, so no a2a/ artifact was written at all.
+  Idempotency: >-
+    Not emitted. No idempotency-key contract is documented on any Creatio
+    surface. See conventions/creatio-conventions.yml.
+  CLI: >-
+    Not emitted. clio is published by the Advance Technologies Foundation, not
+    Creatio, and is absent from Creatio's own documentation. See
+    cli/creatio-cli.yml.
+  Postman: >-
+    Not emitted. The public "Creatio" Postman workspace is published by
+    "Postman Atlas", not Creatio. No first-party workspace exists.
+  GitHubOrganization: >-
+    Not emitted. github.com/creatio is a personal user account (5 repos, no bio,
+    no linked site), not a Creatio organization.
 x-enrichment:
-  date: '2026-07-19'
-  status: backfilled
+  date: '2026-08-13'
+  status: enriched
+  artifacts_added: 9
   pass: local-v1
-  note: backfilled from .gitignore signal + verified work evidence
