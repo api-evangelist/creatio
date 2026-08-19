@@ -1,0 +1,104 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.creatio.com/products/pricing/compare-platform-plans
+docs:
+  pricing: https://www.creatio.com/products/pricing
+  platform_plans: https://www.creatio.com/products/pricing/compare-platform-plans
+  ai_packages: https://www.creatio.com/products/pricing/compare-ai-packages
+currency: USD
+summary: >-
+  Creatio publishes a three-tier platform plan comparison (Growth, Enterprise,
+  Unlimited) with the QUOTAS per tier but NOT the per-user list price — the
+  price cells route to "Contact us". The AI packages page, by contrast,
+  publishes hard annual list prices. Both are captured below. The per-tier API
+  call quota on the platform plans is the published rate limit; see
+  rate-limits/creatio-rate-limits.yml.
+plan_count: 3
+plans:
+  - name: Growth
+    price: null
+    price_note: >-
+      Per-user monthly price is not published on the comparison page; the tier
+      is quoted by sales. Minimum 5 users.
+    billing_period: month
+    minimum_seats: 5
+    limits:
+      workflow_executions: 50000 per month
+      ai_credits: 200 per user
+      api_calls: 10000 per user per day
+      environments: 2
+      audit_log_retention_days: 90
+  - name: Enterprise
+    price: null
+    price_note: Per-user monthly price is not published; quoted by sales. Minimum 5 users.
+    billing_period: month
+    minimum_seats: 5
+    limits:
+      workflow_executions: unlimited
+      ai_credits: 400 per user
+      api_calls: unlimited
+      environments: 3
+      audit_log_retention_days: 365
+    includes:
+      - SSO / LDAP
+      - HIPAA compliance option
+  - name: Unlimited
+    price: null
+    price_note: Per-user monthly price is not published; quoted by sales. Unlimited users.
+    billing_period: month
+    minimum_seats: null
+    limits:
+      workflow_executions: unlimited
+      ai_credits: 10000 per user
+      api_calls: unlimited
+      environments: unlimited
+      audit_log_retention_days: unlimited
+    includes:
+      - Dedicated cloud resources
+      - Premium support included
+add_ons:
+  - name: Governance Application
+    price: 50
+    currency: USD
+    billing_period: month
+    unit: per user
+    available_on:
+      - Growth
+      - Enterprise
+    source: https://www.creatio.com/products/pricing/compare-platform-plans
+ai_packages:
+  source: https://www.creatio.com/products/pricing/compare-ai-packages
+  billing_period: year
+  currency: USD
+  packages:
+    - name: Start
+      price: 5000
+      ai_credits: 500000
+      compute: X1
+      managed_llm: OpenAI only
+    - name: Grow
+      price: 25000
+      ai_credits: 1500000
+      advisory_hours: 50 per year
+    - name: Accelerate
+      price: 75000
+      ai_credits: 4000000
+    - name: Scale
+      price: 150000
+      ai_credits: 8000000
+      compute: X8
+      advisory_hours: 300 per year
+    - name: Freedom
+      price: null
+      price_note: Custom. Includes on-premises deployment and bring-your-own-model.
+      ai_credits: custom
+  credit_blocks:
+    unit: 500000 AI credits
+    price_range: 4400-5000 USD per block, tiered by package
+trial:
+  url: https://www.creatio.com/trial
+  free_tier: false
+  note: >-
+    Creatio offers a time-limited free trial of the product, not a permanent
+    free tier and not a developer sandbox with test credentials. See
+    https://www.creatio.com/legal for the free-trial terms.

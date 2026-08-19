@@ -1,9 +1,11 @@
-generated: '2026-07-18'
+generated: '2026-08-13'
 method: searched
 source: https://academy.creatio.com/docs/developer/integrations_and_api/data_services/odata/overview
 docs:
   odata: https://academy.creatio.com/docs/developer/integrations_and_api/data_services/odata/overview
   dataservice: https://academy.creatio.com/docs/developer/integrations_and_api/data_services/dataservice/overview
+  business_process_service: https://academy.creatio.com/docs/developer/integrations_and_api/business_process_service
+  webhook_service: https://academy.creatio.com/guides/no-code-customization/base-integrations/webhook-service-integration/overview
 summary: >-
   Cross-cutting request/response semantics for the Creatio data-access APIs
   (OData 4/3 and DataService). Creatio does not document an idempotency-key
@@ -46,10 +48,35 @@ limits:
   note: Maximum entity row count defaults to 20,000 (configurable in Web.config).
 versioning:
   see: lifecycle/creatio-lifecycle.yml
+idempotency:
+  supported: false
+  header: null
+  note: >-
+    Re-checked 2026-08-13. Creatio documents no idempotency-key contract, no
+    request-deduplication window, and no safe-retry guidance on OData,
+    DataService, the Business Process service, or the inbound webhook service.
+    Retries of a DataService InsertQuery or an OData POST are not deduplicated.
+    Because nothing matching /idempoten/i is genuinely supported, NO
+    `type: Idempotency` pointer is emitted in apis.yml.
+request_tracing:
+  documented: false
+  note: No correlation-id / request-id response header is documented for support escalation.
 error_envelope:
   odata: OData error payload (error.code, error.message) on 4xx/5xx.
   dataservice: >-
     DataService responses include a success flag and, on failure, an errorInfo
     object (message, errorCode, stackTrace) in the reply body.
+  see: errors/creatio-error-codes.yml
 rate_limit_signaling:
   documented: false
+  note: >-
+    No X-RateLimit-* / RateLimit-* / Retry-After headers are documented. The
+    only published request quota is a per-user-per-day API call ceiling on the
+    pricing page, not a runtime signal.
+  see: rate-limits/creatio-rate-limits.yml
+events:
+  outbound: false
+  inbound_webhooks: true
+  see: asyncapi/creatio-webhooks.yml
+changelog:
+  see: changelog/creatio-changelog.yml

@@ -1,21 +1,68 @@
-generated: '2026-07-18'
+generated: '2026-08-13'
 method: searched
-source: https://academy.creatio.com/docs
+source: https://academy.creatio.com/guides/resources/release_calendar
 versioning:
   scheme: platform-release
-  current: '8.x'
+  current: 8.3.4 Twin
+  current_released: '2026-05-07'
+  line: 8.x (Twin generation; preceded by Energy 8.2.x, Quantum 8.1.x, Atlas 8.0.x)
   notes: >-
-    Creatio versions the platform (currently the 8.x line, e.g. 8.2 Quantum /
-    8.3 releases) rather than versioning the OData/DataService HTTP surface. The
-    OData protocol version (3 vs 4) is selected by endpoint path.
-  docs: https://academy.creatio.com/docs
+    Creatio versions the platform, not the HTTP surface. The OData and
+    DataService endpoints are not independently versioned; the OData protocol
+    version (3 vs 4) is selected by endpoint path (/0/odata for OData 4,
+    /0/ServiceModel/EntityDataService.svc for OData 3). Creatio publishes a
+    dated release calendar back to 7.4.0 (2014-10-28) and per-version release
+    notes.
+  docs: https://academy.creatio.com/guides/resources/release_calendar
+  release_notes: https://academy.creatio.com/guides/resources/category/release-notes
+  changelog: changelog/creatio-changelog.yml
 deprecation:
   policy_url: null
   sunset_header: false
-  notes: No formal public API deprecation policy or RFC 8594 Sunset/Deprecation header support was found.
+  deprecation_header: false
+  notes: >-
+    No public API deprecation policy and no RFC 8594 Sunset / Deprecation header
+    support was found. OData 3 is described in the documentation as "legacy"
+    with a recommendation to use OData 4, but no sunset date, migration window
+    or removal commitment is published for it. Re-checked 2026-08-13; no
+    `type: Deprecation` pointer is emitted.
 sla:
-  url: https://www.creatio.com/services/support/options
+  url: https://www.creatio.com/legal
+  document: >-
+    Master Subscription Agreement including Service Level Agreement and Support
+    Policy, effective 2026-02-03 (PDF, linked from the legal hub).
+  document_url: https://d3a7ykdi65m4cy.cloudfront.net/en/s3fs-public/static-site/legal/06-2026/master-subscription-agreement-including-service-level-agreement-and-support-policy-effective-as-of-february-03-2026.pdf
   uptime_target: null
+  uptime_note: >-
+    The SLA is contractual, distributed as a PDF annex to the Master
+    Subscription Agreement. No uptime percentage is published on a web page, so
+    none is recorded here.
+  support_options: https://www.creatio.com/services/support/options
 status_page: null
-roadmap: https://www.creatio.com/product/roadmap
+status_page_probe:
+  - url: https://status.creatio.com/
+    status: 404
+  - url: https://creatio.statuspage.io/
+    status: 200
+    verdict: not-a-status-page
+    note: >-
+      IMPORTANT NEGATIVE RESULT. creatio.statuspage.io answers 200 but 302s to
+      https://www.atlassian.com/software/statuspage — an unclaimed Statuspage
+      subdomain serving Atlassian's marketing page, not a Creatio status page.
+      Its /api/v2/summary.json redirects to the same place. No `type: StatusPage`
+      pointer is emitted; a naive 200 check would have credited this.
+  - url: https://trust.creatio.com/
+    status: 404
+roadmap: null
+roadmap_probe:
+  - url: https://www.creatio.com/product/roadmap
+    status: 404
+    note: >-
+      This URL was carried in apis.yml from an earlier round and is dead. No
+      roadmap page appears in the 1,618-URL www.creatio.com sitemap and
+      community.creatio.com/ideas and /roadmap both 404. The Roadmap pointer was
+      removed from apis.yml on 2026-08-13 rather than left pointing at a 404.
+release_cadence: >-
+  Roughly quarterly; median gap of about 10 weeks across the last nine platform
+  releases.
 deprecated_operations: []

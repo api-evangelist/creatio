@@ -1,32 +1,81 @@
-generated: '2026-07-18'
-method: searched
-source: live probes of Creatio hosts
-host: https://www.creatio.com
-documents:
-  - path: /.well-known/security.txt
-    status: 403
-    file: null
-    note: WAF-blocked (403), not served
-  - path: /.well-known/openid-configuration
-    status: 404
-    file: null
-  - path: /.well-known/oauth-authorization-server
-    status: 404
-    file: null
-  - path: /.well-known/api-catalog
-    status: 404
-    file: null
-  - path: /.well-known/ai-plugin.json
-    status: 404
-    file: null
-other_hosts:
+generated: '2026-08-13'
+method: probed
+source: live HTTP probes of every Creatio host in apis.yml, 2026-08-13
+summary: >-
+  Creatio serves NO /.well-known/ document on any host. Every path probed
+  returned 404, or 403 from the WAF in front of www / academy / community. A 403
+  is a block, not a served document, so it is recorded as a miss. Because
+  nothing returned a 200 carrying a real document, NO `type: WellKnown` and NO
+  `type: SecurityTxt` pointer is emitted in apis.yml — this file records an
+  absence, and an absence must not score as a presence. (A WellKnown pointer
+  present from an earlier round was removed on 2026-08-13 for exactly this
+  reason.)
+served_document_count: 0
+hosts:
+  - host: https://www.creatio.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 403
+        file: null
+        note: WAF-blocked, not served.
+      - path: /security.txt
+        status: 403
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 404
+        file: null
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+        file: null
+      - path: /.well-known/api-catalog
+        status: 404
+        file: null
+      - path: /.well-known/ai-plugin.json
+        status: 404
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 404
+        file: null
+      - path: /.well-known/agent.json
+        status: 404
+        file: null
   - host: https://academy.creatio.com
     documents:
       - path: /.well-known/security.txt
         status: 403
+        file: null
+        note: WAF-blocked.
+      - path: /.well-known/agent-card.json
+        status: 404
+        file: null
       - path: /.well-known/openid-configuration
         status: 404
+        file: null
+  - host: https://community.creatio.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 403
+        file: null
+  - host: https://marketplace.creatio.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        file: null
   - host: https://identity.creatio.com
     documents:
       - path: /.well-known/openid-configuration
         status: 404
+        file: null
+        note: >-
+          Creatio's OAuth 2.0 flow runs through the Creatio Identity Service,
+          which is deployed per instance. The public identity.creatio.com host
+          serves no discovery document, so OIDC/OAuth metadata cannot be read
+          anonymously.
+related_findings:
+  - >-
+      https://www.creatio.com/llms.txt DOES return 200 with a real
+      provider-authored llms.txt (7,582 bytes, text/plain). It is saved verbatim
+      at llms/creatio-llms.txt and carries the LLMsTxt pointer. It is not a
+      /.well-known/ path and does not change the count above.
+  - >-
+      https://www.creatio.com/robots.txt returns 200.

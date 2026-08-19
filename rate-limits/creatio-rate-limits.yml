@@ -1,0 +1,79 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.creatio.com/products/pricing/compare-platform-plans
+docs:
+  plan_quotas: https://www.creatio.com/products/pricing/compare-platform-plans
+  odata_limits: https://academy.creatio.com/docs/developer/integrations_and_api/data_services/odata/overview
+summary: >-
+  Creatio publishes its API call quota on the PRICING page, not in the developer
+  documentation, and it is expressed per user per day rather than per key or per
+  window. The developer docs publish payload-shape limits (response rows, batch
+  sub-requests, file size) but no request-rate limit, no throttling behaviour,
+  and no response headers. An agent cannot read a remaining-quota signal off a
+  Creatio response: nothing in the documentation names an X-RateLimit-*,
+  RateLimit-* or Retry-After header, or the status code returned on exhaustion.
+limit_count: 5
+limits:
+  - name: API calls (Growth plan)
+    scope: per-user
+    window: day
+    limit: 10000
+    plan: Growth
+    source: https://www.creatio.com/products/pricing/compare-platform-plans
+  - name: API calls (Enterprise plan)
+    scope: per-user
+    window: day
+    limit: unlimited
+    plan: Enterprise
+    source: https://www.creatio.com/products/pricing/compare-platform-plans
+  - name: API calls (Unlimited plan)
+    scope: per-user
+    window: day
+    limit: unlimited
+    plan: Unlimited
+    source: https://www.creatio.com/products/pricing/compare-platform-plans
+  - name: OData response body rows
+    scope: per-request
+    window: null
+    limit: 20000
+    unit: rows
+    note: >-
+      "The response body can contain up to 20 000 lines." Configurable via the
+      maximum entity row count setting in Web.config on on-site deployments.
+    source: https://academy.creatio.com/docs/developer/integrations_and_api/data_services/odata/overview
+  - name: OData $batch sub-requests
+    scope: per-request
+    window: null
+    limit: 100
+    unit: sub-requests
+    note: A single $batch request can contain up to 100 sub-requests.
+    source: https://academy.creatio.com/docs/developer/integrations_and_api/data_services/odata/overview
+related_quotas:
+  - name: Workflow (business process) executions
+    scope: per-tenant
+    window: month
+    limit: 50000
+    plan: Growth
+    note: Unlimited on Enterprise and Unlimited plans.
+    source: https://www.creatio.com/products/pricing/compare-platform-plans
+  - name: File upload size
+    scope: per-request
+    limit: 10
+    unit: MB
+    note: Default; governed by the MaxFileSize system setting.
+    source: https://academy.creatio.com/docs/developer/integrations_and_api/data_services/odata/overview
+response_headers:
+  documented: false
+  headers: []
+  note: >-
+    No rate-limit response headers are documented. Neither the OData nor the
+    DataService reference names X-RateLimit-Limit / X-RateLimit-Remaining /
+    RateLimit-* / Retry-After.
+exhaustion:
+  status_code: null
+  documented: false
+  note: The status code and body returned when the daily API call quota is exhausted are not documented.
+gaps:
+  - The API call quota is published on the pricing page only, never in the developer docs.
+  - No runtime signal — an integration cannot discover its remaining quota from a response.
+  - No documented behaviour on exhaustion (status code, Retry-After, or degradation).

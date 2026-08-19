@@ -1,0 +1,88 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  Live registry metadata reads — registry.npmjs.org and api.nuget.org
+  (registration5-semver1 catalog entries), 2026-08-13.
+summary: >-
+  Creatio publishes one first-party client library on a public registry: the
+  Creatio DevKit SDK (@creatio-devkit/common) on npm, used to build Freedom UI
+  customizations and integrate them into the Creatio platform. There is no
+  first-party Python, Java, Go, Ruby, PHP or Rust client. The two .NET packages
+  below (clio, Creatio.Client) are the de-facto developer toolchain for the
+  platform but are published from the Advance Technologies Foundation GitHub
+  org, not from Creatio, and are not referenced in Creatio's own developer
+  documentation — they are recorded as partner/community, not official.
+packages:
+  - name: '@creatio-devkit/common'
+    language: javascript
+    registry: npm
+    url: https://www.npmjs.com/package/@creatio-devkit/common
+    metadata_url: https://registry.npmjs.org/@creatio-devkit/common
+    version: 0.834.0
+    published: '2026-05-22'
+    release_count: 30
+    license: SEE LICENSE IN LICENSE.md
+    official: true
+    description: >-
+      Creatio DevKit SDK. "Allows developers to create customizations and
+      integrate them to Creatio platform." First-party: published under the
+      @creatio-devkit npm scope with a Creatio-proprietary license file.
+    note: >-
+      Currency is good — latest release 2026-05-22, one month after the
+      8.3.4 Twin platform release (2026-05-07). The package carries no
+      repository or homepage field on npm.
+  - name: clio
+    language: dotnet
+    registry: nuget
+    url: https://www.nuget.org/packages/clio
+    metadata_url: https://api.nuget.org/v3/registration5-semver1/clio/index.json
+    version: 8.1.0.102
+    published: '2026-08-13'
+    release_count: 453
+    license: MIT
+    repository: https://github.com/Advance-Technologies-Foundation/clio
+    official: false
+    description: >-
+      CLI interface for Creatio. NuGet package type DotnetTool; package tags:
+      cli, ATF, clio, creatio.
+    note: >-
+      AMBIGUOUS PROVENANCE, recorded honestly. The NuGet `authors` field reads
+      "creatio rnd team", but the package is published from the
+      Advance-Technologies-Foundation GitHub org (a Creatio partner) under MIT,
+      and Creatio's own Academy documentation never references it. Treated as
+      partner/community rather than first-party; no `type: CLI` pointer is
+      emitted in apis.yml on the strength of it. Extremely active — 453
+      published versions, latest the same day this artifact was written.
+  - name: Creatio.Client
+    language: dotnet
+    registry: nuget
+    url: https://www.nuget.org/packages/Creatio.Client
+    metadata_url: https://api.nuget.org/v3/registration5-semver1/creatio.client/index.json
+    version: 1.0.38
+    published: '2026-06-17'
+    release_count: 38
+    license: MIT
+    repository: https://github.com/Advance-Technologies-Foundation/creatioclient
+    official: false
+    description: >-
+      ".NET client to call Creatio API in simple way (.NET Standard
+      compatible)". Package tags: creatio, api, client, netstandard, bpm, crm.
+    note: >-
+      Authored by Advance Technologies Foundation (partner), not Creatio.
+      The dependency clio takes on for HTTP calls into a Creatio instance.
+absent:
+  - registry: pypi
+    query: creatio
+    status: 404
+    note: No Creatio-published Python client on PyPI (pypi.org/pypi/creatio/json returned 404).
+  - registry: npm
+    query: creatio
+    status: 200
+    note: >-
+      registry.npmjs.org/creatio resolves, but the package is NOT Creatio's —
+      it is "Generate preset boilerplates for your Javascript projects" by
+      maintainer btsheehy, last published 2019-03-14. Name collision, excluded.
+  - registry: npm
+    query: '@creatio/sdk'
+    status: 404
+official_sdk_count: 1

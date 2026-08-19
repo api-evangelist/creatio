@@ -1,0 +1,86 @@
+generated: '2026-08-13'
+method: searched
+source: https://academy.creatio.com/guides/ai-studio/integrations/mcp-integration
+status: none
+summary: >-
+  Creatio does NOT ship an MCP server. Creatio is an MCP CLIENT: Creatio AI
+  Studio connects to third-party MCP servers and exposes their tools to Creatio
+  AI agents. There is no endpoint an external MCP client can POST to in order to
+  call Creatio, and no installable Creatio MCP package on any registry. No
+  `type: MCPServer` pointer is emitted in apis.yml, because emitting one would
+  credit Creatio with an agent surface it does not serve.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: searched
+direction: client
+client_capabilities:
+  docs: https://academy.creatio.com/guides/ai-studio/integrations/mcp-integration
+  description: >-
+    "Connect an MCP server to Creatio AI Studio to make its tools available to
+    your agents." The operator supplies an MCP Server URL; Creatio discovers all
+    tools the server exposes rather than requiring each to be declared.
+  credential_types:
+    - oauth
+    - bearer-token
+    - api-key
+  access_modes:
+    - name: integration-credentials
+      description: Shared authentication configured on the integration itself.
+    - name: agent-owned-credentials
+      description: Each agent authenticates to the MCP server with its own credentials.
+    - name: delegated-access
+      description: End-user OAuth with a redirect URL; the agent acts on the user's behalf.
+  related:
+    - https://academy.creatio.com/guides/ai-studio/integrations/integrations-overview
+    - https://academy.creatio.com/guides/ai-studio/set-up-tool-confirmation
+    - https://academy.creatio.com/guides/ai-studio/configure-a-hitl-policy
+searches_performed:
+  - target: https://academy.creatio.com/search?search=MCP%20server
+    result: no results
+  - target: https://marketplace.creatio.com/apps?search=MCP
+    result: no Creatio-published MCP server app found
+  - target: academy.creatio.com/guides sitemap (3853 URLs)
+    result: >-
+      One MCP page only — /guides/ai-studio/integrations/mcp-integration —
+      and it documents the client side.
+  - target: 'npm registry: @creatio-devkit, @creatio scopes'
+    result: no MCP server package
+candidate_tools:
+  note: >-
+    NOT a server manifest and NOT wired to any pointer. If Creatio were to
+    publish an MCP server, these are the operations its own documented HTTP
+    surface would most naturally project as tools. Derived from the OData 4,
+    DataService and ProcessEngineService documentation, not from a spec.
+  status: candidate
+  tools:
+    - name: odata_query_records
+      backing: GET /0/odata/{Collection} with $filter/$select/$expand/$orderby/$top/$skip
+      source: https://academy.creatio.com/docs/developer/integrations_and_api/data_services/odata/overview
+    - name: odata_create_record
+      backing: POST /0/odata/{Collection}
+      source: https://academy.creatio.com/docs/developer/integrations_and_api/data_services/odata/overview
+    - name: odata_update_record
+      backing: PATCH /0/odata/{Collection}({Id})
+      source: https://academy.creatio.com/docs/developer/integrations_and_api/data_services/odata/overview
+    - name: odata_delete_record
+      backing: DELETE /0/odata/{Collection}({Id})
+      source: https://academy.creatio.com/docs/developer/integrations_and_api/data_services/odata/overview
+    - name: odata_get_metadata
+      backing: GET /0/odata/$metadata (EDMX)
+      source: https://academy.creatio.com/docs/developer/integrations_and_api/data_services/odata/overview
+    - name: dataservice_select
+      backing: POST /0/dataservice/json/reply/SelectQuery
+      source: https://academy.creatio.com/docs/developer/integrations_and_api/data_services/dataservice/overview
+    - name: dataservice_insert
+      backing: POST /0/dataservice/json/reply/InsertQuery
+      source: https://academy.creatio.com/docs/developer/integrations_and_api/data_services/dataservice/overview
+    - name: dataservice_batch
+      backing: POST /0/dataservice/json/reply/BatchQuery
+      source: https://academy.creatio.com/docs/developer/integrations_and_api/data_services/dataservice/overview
+    - name: run_business_process
+      backing: GET /0/ServiceModel/ProcessEngineService.svc/{processSchemaName}/Execute
+      source: https://academy.creatio.com/docs/developer/integrations_and_api/business_process_service

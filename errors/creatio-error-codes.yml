@@ -1,0 +1,59 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  conformance/creatio-conformance.yml + conventions/creatio-conventions.yml +
+  https://academy.creatio.com/docs/developer/integrations_and_api/data_services/odata/overview
+format: odata-error
+rfc9457: false
+summary: >-
+  Creatio publishes NO error-code registry. There is no page in the developer
+  documentation or the 3,853-URL academy guides sitemap listing error codes,
+  their meanings, or remediation. What is knowable is the error ENVELOPE per
+  surface, and for OData 4 that envelope is fixed by the OASIS protocol Creatio
+  conforms to rather than by Creatio. This artifact records the envelopes and
+  the gap; it does NOT invent a code list.
+envelopes:
+  - surface: OData 4 (/0/odata)
+    media_type: application/json
+    shape: >-
+      OASIS OData 4 error object: {"error":{"code":"<string>",
+      "message":"<string>","target":"<string>","details":[...],
+      "innererror":{...}}}. `code` and `message` are required by the protocol;
+      `target`, `details` and `innererror` are optional.
+    basis: >-
+      Protocol-defined, not Creatio-defined. Creatio conforms to OData 4 (see
+      conformance/creatio-conformance.yml), which specifies this envelope. The
+      VALUES Creatio puts in `code` are not published.
+    confidence: high
+  - surface: OData 3 (/0/ServiceModel/EntityDataService.svc)
+    media_type: application/json | application/xml
+    shape: >-
+      OData 3 error object with an "error" member carrying code and message.
+      Legacy surface; Creatio's docs recommend OData 4 instead.
+    confidence: medium
+  - surface: DataService (/0/dataservice)
+    media_type: application/json
+    shape: >-
+      DataService reply objects carry a success flag and, on failure, an
+      errorInfo object (message, errorCode, stackTrace).
+    basis: >-
+      Carried forward from conventions/creatio-conventions.yml (recorded
+      method: searched in a prior round). Re-reading the DataService overview on
+      2026-08-13 did not re-confirm the field names on that page, so this is
+      marked medium rather than high.
+    confidence: medium
+status_codes:
+  documented: false
+  note: >-
+    Creatio does not document which HTTP status codes its data services return
+    for which failure classes. DataService replies are POST-based and are
+    documented by example only.
+codes: []
+codes_note: >-
+  Empty deliberately. No published Creatio error-code list exists to harvest and
+  none was invented.
+gaps:
+  - No error-code reference page anywhere on academy.creatio.com.
+  - No application/problem+json (RFC 9457) support on any surface.
+  - HTTP status-code semantics undocumented for both data services.
+  - No documented correlation/request-id header for support escalation.

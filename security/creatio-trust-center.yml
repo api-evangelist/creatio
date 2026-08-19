@@ -1,0 +1,80 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.creatio.com/our-technologies/security
+docs:
+  security: https://www.creatio.com/our-technologies/security
+  shared_responsibility: https://www.creatio.com/gdpr/shared-security-responsibility-model
+  gdpr: https://www.creatio.com/GDPR
+  ai_trust_and_governance: https://www.creatio.com/ai/ai-trust-and-governance
+  legal: https://www.creatio.com/legal
+summary: >-
+  Creatio does not run a hosted trust center (trust.creatio.com returns 404) and
+  does not publish a certificate portal with downloadable attestations. It does
+  publish a security page naming its certifications and its testing program.
+  Certificates themselves are not linked from the page — a buyer requests them
+  through sales.
+trust_center_url: null
+trust_center_note: >-
+  Probed https://trust.creatio.com/ -> 404 and https://www.creatio.com/company/security
+  -> 404. The security content lives at /our-technologies/security.
+certifications:
+  - name: ISO/IEC 27001:2013
+    status: certified
+    evidence: >-
+      "ISO / IEC 27001: 2013 compliance certificate issued to the Creatio cloud
+      services."
+    document_url: null
+  - name: SOC 1
+    status: claimed
+    evidence: Listed among the standards Creatio's data processing centers comply with.
+    document_url: null
+  - name: SOC 2
+    status: claimed
+    evidence: Listed among the standards Creatio's data processing centers comply with.
+    document_url: null
+  - name: GDPR
+    status: compliant
+    evidence: >-
+      "The data processing centers are compliant with international industry
+      standards, including GDPR." Creatio also publishes a shared security
+      responsibility model and a Data Processing Addendum.
+    document_url: https://www.creatio.com/gdpr/shared-security-responsibility-model
+  - name: HIPAA
+    status: claimed
+    evidence: >-
+      "Creatio complies with the HIPAA security requirements." The HIPAA
+      compliance option is listed as an Enterprise-plan capability on the
+      pricing comparison.
+    document_url: null
+  - name: FedRAMP
+    status: badge-displayed
+    evidence: >-
+      A FedRAMP compliance badge is displayed on the security page. No
+      authorization package, agency sponsor or Marketplace listing is linked, so
+      this is recorded as displayed-but-unverified rather than authorized.
+    document_url: null
+security_program:
+  vulnerability_scanning: true
+  penetration_testing: true
+  penetration_testing_note: >-
+    "Regular internal and external penetration testing for the network and
+    software." Third-party tools are also used for scanning and security
+    testing. No report or summary is published.
+  compliance_audits: true
+  bug_bounty: false
+  vulnerability_disclosure_program: false
+  disclosure_note: >-
+    No vulnerability disclosure policy, security@ contact, or bug bounty program
+    was found. /.well-known/security.txt is WAF-blocked (HTTP 403) on
+    www.creatio.com, academy.creatio.com and community.creatio.com — blocked,
+    not served, so it is not a published disclosure channel. No listing found on
+    HackerOne, Bugcrowd or Intigriti.
+infrastructure:
+  hosting:
+    - Amazon Web Services
+    - Microsoft Azure
+  note: Cloud instances are hosted on AWS and Azure data processing centers.
+gaps:
+  - No trust center or certificate portal — attestations are sales-gated.
+  - No published vulnerability disclosure policy or security.txt (403, WAF-blocked).
+  - FedRAMP badge is displayed without a linked authorization.

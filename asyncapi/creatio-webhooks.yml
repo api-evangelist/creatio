@@ -1,0 +1,63 @@
+generated: '2026-08-13'
+method: searched
+source: https://academy.creatio.com/guides/no-code-customization/base-integrations/webhook-service-integration/overview
+docs:
+  overview: https://academy.creatio.com/guides/no-code-customization/base-integrations/webhook-service-integration/overview
+  retrieve_url: https://academy.creatio.com/guides/no-code-customization/base-integrations/webhook-service-integration/retrieve-a-webhook
+  process: https://academy.creatio.com/guides/no-code-customization/base-integrations/webhook-service-integration/process-webhooks
+summary: >-
+  Creatio publishes a Webhook service, but it runs in the INBOUND direction
+  only: "A webhook is an automated callback that lets an external app push data
+  to Creatio in real time." Creatio RECEIVES webhooks; it does not publish an
+  outbound event catalog, an event stream, or an AsyncAPI document, so there is
+  no set of events an external system can subscribe to. Recorded here because an
+  integrator planning event-driven work with Creatio needs to know the arrow
+  points the other way.
+direction: inbound
+asyncapi_published: false
+asyncapi_note: >-
+  No AsyncAPI document is published on any Creatio host. Probed
+  www.creatio.com and academy.creatio.com; the 3,853-URL academy guides sitemap
+  contains no asyncapi/event-catalog page. Not fabricated.
+outbound_events:
+  published: false
+  note: >-
+    Creatio has no documented outbound webhook/event subscription surface.
+    Outbound HTTP calls are possible from a business process (the low-code web
+    service integration), but that is caller-authored, not a subscribable event
+    catalog.
+  alternative: https://academy.creatio.com/guides/no-code-customization/base-integrations/web-services/getting-started-with-low-code-web-service-integration
+inbound_webhook_service:
+  transport: http
+  method: POST
+  content_types:
+    - application/json
+    - multipart/form-data
+  authentication: oauth2
+  authentication_note: >-
+    OAuth 2.0. Configured out of the box for Creatio cloud instances; must be
+    configured manually for on-site deployments.
+  endpoint: per-instance
+  endpoint_note: >-
+    The webhook URL is NOT a fixed documented path. It is generated per object
+    and retrieved from the UI ("Click Get the Webhook URL ... The URL is copied
+    to your clipboard automatically"), reached via the target section ->
+    Data import -> Web forms and pages -> Other landing pages. Creatio's docs do
+    not publish the underlying path template, so none is recorded here.
+  required_parameters:
+    - name: EntityName
+      description: Names the Creatio object the inbound record is written to.
+      required: true
+  payload_note: >-
+    Body carries the target object's column codes and values. "When your webhook
+    follows the required structure, Creatio writes a record into the target
+    object automatically." Creatio advises avoiding special characters in the
+    body for security reasons.
+  supported_objects_out_of_the_box:
+    - Contact
+    - Lead
+    - Order
+    - Submitted form
+  extensibility: >-
+    Additional objects can be enabled and the payload shaped — see the
+    "Retrieve a webhook" and "Process webhooks" pages.

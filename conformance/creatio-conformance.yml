@@ -1,27 +1,93 @@
-generated: '2026-07-18'
+generated: '2026-08-13'
 method: searched
-source: https://academy.creatio.com/docs/developer/integrations_and_api/data_services/odata/overview
+source: >-
+  https://academy.creatio.com/docs/developer/integrations_and_api/data_services/odata/overview
+  + https://www.creatio.com/our-technologies/security
 standards:
   - id: odata-v4
     conforms: true
     evidence: >-
       Creatio exposes an OData 4 service at /0/odata (and /odata) with an EDMX
       $metadata document; OData 4 is the recommended protocol per the docs.
+      OData is described in Creatio's own integration options page as an
+      "ISO/IEC-approved OASIS standard".
   - id: odata-v3
     conforms: true
     evidence: >-
-      Legacy OData 3 endpoint at /0/ServiceModel/EntityDataService.svc.
+      Legacy OData 3 endpoint at /0/ServiceModel/EntityDataService.svc. Docs
+      recommend OData 4 for new integration work.
   - id: oauth2
     conforms: true
     evidence: >-
-      OAuth 2.0 authorization (client-credentials) via the Creatio Identity
-      Service for integrated applications.
+      OAuth 2.0 authorization (client credentials) via the Creatio Identity
+      Service for integrated applications; OAuth 2.0 also secures the inbound
+      webhook service. No scope reference is published and no
+      /.well-known/oauth-authorization-server is served on any public host.
+  - id: oidc
+    conforms: false
+    evidence: >-
+      No OpenID Connect discovery document is served —
+      /.well-known/openid-configuration returned 404 on www, academy and
+      identity.creatio.com (2026-08-13).
   - id: rest
     conforms: true
     evidence: DataService is a RESTful web service over HTTP POST query endpoints.
+  - id: openapi
+    conforms: false
+    evidence: >-
+      Creatio publishes no OpenAPI/Swagger document. Probed /openapi.json,
+      /swagger.json on www.creatio.com and academy.creatio.com (404), and found
+      no spec URL anywhere in the 1,618-URL site sitemap or the 3,853-URL
+      academy guides sitemap. The machine-readable contract Creatio does serve
+      is the per-instance OData 4 EDMX at /0/odata/$metadata.
+  - id: asyncapi
+    conforms: false
+    evidence: >-
+      No AsyncAPI document. The webhook service is inbound-only; see
+      asyncapi/creatio-webhooks.yml.
   - id: rfc9457-problem-details
     conforms: false
-    evidence: Errors use OData / DataService native error envelopes, not application/problem+json.
+    evidence: >-
+      Errors use OData / DataService native error envelopes, not
+      application/problem+json. See errors/creatio-error-codes.yml.
+  - id: rfc8594-sunset-header
+    conforms: false
+    evidence: No Sunset or Deprecation header support documented.
+  - id: rfc9116-security-txt
+    conforms: false
+    evidence: >-
+      /.well-known/security.txt is WAF-blocked (403) on www, academy and
+      community; 404 on marketplace. Not served.
   - id: pagination
     conforms: true
-    evidence: OData $top/$skip/$skiptoken server- and client-driven paging; DataService RowCount paging.
+    evidence: >-
+      OData $top/$skip/$skiptoken server- and client-driven paging; DataService
+      RowCount paging.
+  - id: idempotency
+    conforms: false
+    evidence: >-
+      No idempotency-key contract is documented on any Creatio surface. No
+      `type: Idempotency` pointer is emitted.
+compliance:
+  source: https://www.creatio.com/our-technologies/security
+  detail: security/creatio-trust-center.yml
+  programs:
+    - id: iso-27001
+      name: ISO/IEC 27001:2013
+      status: certified
+    - id: soc-1
+      name: SOC 1
+      status: claimed
+    - id: soc-2
+      name: SOC 2
+      status: claimed
+    - id: gdpr
+      name: GDPR
+      status: compliant
+    - id: hipaa
+      name: HIPAA
+      status: claimed
+    - id: fedramp
+      name: FedRAMP
+      status: badge-displayed
+      note: Badge shown without a linked authorization package; unverified.

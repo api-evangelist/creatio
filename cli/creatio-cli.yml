@@ -1,0 +1,43 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.nuget.org/packages/clio
+summary: >-
+  Creatio publishes NO first-party CLI. The de-facto command-line tool for the
+  platform is `clio`, published on NuGet under MIT from the
+  Advance-Technologies-Foundation GitHub org — a Creatio partner, not Creatio.
+  Creatio's own Academy documentation does not reference it. Recorded here for
+  integrators, but NO `type: CLI` pointer is emitted in apis.yml, because that
+  check asserts the provider ships a CLI and Creatio does not.
+first_party_cli: false
+tools:
+  - name: clio
+    official: false
+    maintainer: Advance Technologies Foundation
+    maintainer_note: >-
+      Provenance is genuinely ambiguous and is recorded rather than resolved:
+      the NuGet `authors` field reads "creatio rnd team", but the project is
+      hosted at github.com/Advance-Technologies-Foundation/clio under MIT and is
+      absent from Creatio's developer documentation and academy guides sitemap
+      (3,853 URLs, zero matches for "clio").
+    description: CLI interface for Creatio.
+    registry: nuget
+    package: clio
+    version: 8.1.0.102
+    published: '2026-08-13'
+    release_count: 453
+    license: MIT
+    repository: https://github.com/Advance-Technologies-Foundation/clio
+    install:
+      - dotnet tool install clio -g
+    capability_areas:
+      - Environment registration and connection to a Creatio instance
+      - Package (configuration) creation, install, pull and push
+      - Workspace and source-control workflows
+      - Running SQL and C# against an instance
+      - Application restart, compile and flush-redis operations
+    note: >-
+      Capability areas are named at the level the NuGet description and repo
+      README support. Individual command signatures are not transcribed here
+      because they were not read from a first-party Creatio source.
+see_also:
+  packages: packages/creatio-packages.yml

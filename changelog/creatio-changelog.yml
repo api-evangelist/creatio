@@ -1,0 +1,64 @@
+generated: '2026-08-13'
+method: searched
+source: https://academy.creatio.com/guides/resources/release_calendar
+docs:
+  release_calendar: https://academy.creatio.com/guides/resources/release_calendar
+  release_notes_index: https://academy.creatio.com/guides/resources/category/release-notes
+scheme: platform-release
+scheme_note: >-
+  Creatio versions the PLATFORM, not the HTTP surface. Releases carry a
+  major.minor.patch number plus a codename that names the generation
+  (Atlas -> Quantum -> Energy -> Twin). The OData/DataService endpoints are not
+  independently versioned; the OData protocol version (3 vs 4) is selected by
+  endpoint path. Release notes are per platform version and Creatio publishes a
+  dated release calendar going back to 7.4.0 (2014-10-28).
+current:
+  version: 8.3.4 Twin
+  released: '2026-05-07'
+  notes: https://academy.creatio.com/guides/resources/release-notes/8-3-4-twin-release-notes
+cadence: >-
+  Roughly quarterly. The last six platform releases shipped 2024-10-30,
+  2024-12-26, 2025-03-14, 2025-04-28, 2025-06-19, 2025-10-06, 2025-12-18,
+  2026-03-12 and 2026-05-07 — a median gap of about 10 weeks.
+entries:
+  - version: 8.3.4 Twin
+    date: '2026-05-07'
+    url: https://academy.creatio.com/guides/resources/release-notes/8-3-4-twin-release-notes
+  - version: 8.3.3 Twin
+    date: '2026-03-12'
+    url: https://academy.creatio.com/guides/resources/release-notes/8-3-3-twin-release-notes
+  - version: 8.3.2 Twin
+    date: '2025-12-18'
+    url: https://academy.creatio.com/guides/resources/release-notes/8-3-2-twin-release-notes
+  - version: 8.3.1 Twin
+    date: '2025-10-06'
+    url: https://academy.creatio.com/guides/resources/release-notes/8-3-1-twin-release-notes
+  - version: 8.3 Twin
+    date: '2025-06-19'
+    url: https://academy.creatio.com/guides/resources/release-notes/8-3-twin-release-notes
+  - version: 8.2.3 Energy
+    date: '2025-04-28'
+    url: https://academy.creatio.com/guides/resources/release-notes/8-2-3-energy-release-notes
+  - version: 8.2.2 Energy
+    date: '2025-03-14'
+    url: https://academy.creatio.com/guides/resources/release-notes/8-2-2-energy-release-notes
+  - version: 8.2.1 Energy
+    date: '2024-12-26'
+    url: https://academy.creatio.com/guides/resources/release-notes/8-2-1-energy-release-notes
+  - version: 8.2 Energy
+    date: '2024-10-30'
+    url: https://academy.creatio.com/guides/resources/release-notes/82-energy-release-notes
+  - version: 8.1.5 Quantum
+    date: '2024-09-12'
+    url: https://academy.creatio.com/guides/resources/release-notes/8-1-5-quantum-release-notes
+other_release_tracks:
+  - name: 10X Unlimited
+    url: https://academy.creatio.com/guides/resources/release-notes/10x-unlimited-release-notes
+  - name: Bank AI
+    url: https://academy.creatio.com/guides/resources/category/bankai-release-notes
+breaking_change_policy:
+  documented: false
+  note: >-
+    Release notes are published per version, but Creatio does not publish a
+    separate breaking-change or API-deprecation policy. See
+    lifecycle/creatio-lifecycle.yml.
