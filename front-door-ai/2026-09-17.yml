@@ -1,0 +1,27 @@
+# Front Door AI Index — creatio — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: creatio
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.creatio.com
+  final_host: www.creatio.com
+  ownership: own
+  owner: creatio
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 43
+  host_score: 43
+  density: 82.69
+  words: 520
+  tiers:
+    agentic: 4
+    core: 39
+    model: 0
+  ambiguous: 12
+  top_terms:
+    AI: 39
+    agent: 12
+    AI agent: 4
