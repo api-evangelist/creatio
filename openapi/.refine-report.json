@@ -1,0 +1,23 @@
+{
+  "provider": "creatio",
+  "sources": [
+    "_ae-authored/creatio-openapi-generated.yml"
+  ],
+  "outputs": [
+    "creatio-clear-bundles-api-openapi.yml",
+    "creatio-minify-content-api-openapi.yml",
+    "creatio-odata-api-openapi.yml",
+    "creatio-process-content-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "creatio-openapi-generated.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "creatio-openapi-generated.yml: tagged paths POST /0/odata/{odataid} -> Odata",
+    "creatio-openapi-generated.yml: declared missing tag: Odata",
+    "apis.yml register: written (+4 apis, 8 total)"
+  ],
+  "skipped": []
+}

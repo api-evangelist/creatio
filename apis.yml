@@ -156,26 +156,32 @@ common:
   url: errors/creatio-error-codes.yml
 apis:
 - name: Creatio OData API
-  description: 'OData 4 (recommended) and legacy OData 3 access to Creatio platform entities. The OData
-    4 service is at /0/odata with EDMX metadata at /0/odata/$metadata; supports $filter/$select/$expand/$orderby/$top/$skip
-    and $batch (up to 100 sub-requests). Multi-tenant: the host is per instance.'
-  humanURL: https://academy.creatio.com/docs/developer/integrations_and_api/data_services/odata/overview
+  description: >-
+    OData 4 (recommended) and legacy OData 3 access to Creatio platform entities. The OData 4 service
+    is at /0/odata with EDMX metadata at /0/odata/$metadata; supports $filter/$select/$expand/$orderby/$top/$skip
+    and $batch (up to 100 sub-requests). Multi-tenant: the host is per instance.
+  humanURL: >-
+    https://academy.creatio.com/docs/developer/integrations_and_api/data_services/odata/overview
   baseURL: https://mycreatio.com/0/odata
-  x-baseURL-note: Creatio is multi-tenant; the real base is https://<your-instance>.creatio.com/0/odata.
-    mycreatio.com is Creatio's own documentation example host.
+  x-baseURL-note: >-
+    Creatio is multi-tenant; the real base is https://<your-instance>.creatio.com/0/odata. mycreatio.com
+    is Creatio's own documentation example host.
   tags:
   - OData
   - CRM
   - Data Access
   properties:
   - type: Documentation
-    url: https://academy.creatio.com/docs/developer/integrations_and_api/data_services/odata/overview
+    url: >-
+      https://academy.creatio.com/docs/developer/integrations_and_api/data_services/odata/overview
   aid: creatio:creatio-odata-api
 - name: Creatio DataService API
-  description: RESTful DataService web service for reading and writing platform records via InsertQuery,
-    SelectQuery, UpdateQuery, DeleteQuery, and BatchQuery over HTTP POST. Supports JSON/XML/CSV/JSV serialization
-    and row-window pagination.
-  humanURL: https://academy.creatio.com/docs/developer/integrations_and_api/data_services/dataservice/overview
+  description: >-
+    RESTful DataService web service for reading and writing platform records via InsertQuery, SelectQuery,
+    UpdateQuery, DeleteQuery, and BatchQuery over HTTP POST. Supports JSON/XML/CSV/JSV serialization and
+    row-window pagination.
+  humanURL: >-
+    https://academy.creatio.com/docs/developer/integrations_and_api/data_services/dataservice/overview
   baseURL: https://mycreatio.com/0/dataservice
   x-baseURL-note: Multi-tenant; real base is https://<your-instance>.creatio.com/0/dataservice.
   tags:
@@ -184,16 +190,19 @@ apis:
   - Data Access
   properties:
   - type: Documentation
-    url: https://academy.creatio.com/docs/developer/integrations_and_api/data_services/dataservice/overview
+    url: >-
+      https://academy.creatio.com/docs/developer/integrations_and_api/data_services/dataservice/overview
   aid: creatio:creatio-dataservice-api
 - name: Creatio Business Process Service
-  description: ProcessEngineService.svc runs Creatio business processes from an external application over
-    HTTP. Execute() runs a process by schema name, passing incoming parameters and returning the execution
-    result; ExecProcElByUId() executes a single element of an already-running process. Requires the ForceUseSession
-    and BPMCSRF headers alongside the authenticated session.
+  description: >-
+    ProcessEngineService.svc runs Creatio business processes from an external application over HTTP. Execute()
+    runs a process by schema name, passing incoming parameters and returning the execution result; ExecProcElByUId()
+    executes a single element of an already-running process. Requires the ForceUseSession and BPMCSRF
+    headers alongside the authenticated session.
   humanURL: https://academy.creatio.com/docs/developer/integrations_and_api/business_process_service
   baseURL: https://mycreatio.com/0/ServiceModel/ProcessEngineService.svc
-  x-baseURL-note: Multi-tenant; real base is https://<your-instance>.creatio.com/0/ServiceModel/ProcessEngineService.svc.
+  x-baseURL-note: >-
+    Multi-tenant; real base is https://<your-instance>.creatio.com/0/ServiceModel/ProcessEngineService.svc.
     mycreatio.com is Creatio's own documentation example host.
   tags:
   - Workflow-Automation
@@ -208,15 +217,18 @@ apis:
     url: https://academy.creatio.com/docs/developer/integrations_and_api/business_process_service
   aid: creatio:creatio-business-process-service
 - name: Creatio Webhook Service
-  description: 'Inbound webhook receiver. Lets an external app push data into Creatio in real time over
-    an authenticated POST, writing a record into a target object named by the EntityName parameter. Contact,
-    Lead, Order and Submitted form are supported out of the box; more objects can be enabled. Secured
-    with OAuth 2.0 — configured automatically on cloud instances, manually on-site. Direction is inbound
-    only: Creatio publishes no outbound event catalog.'
-  humanURL: https://academy.creatio.com/guides/no-code-customization/base-integrations/webhook-service-integration/overview
+  description: >-
+    Inbound webhook receiver. Lets an external app push data into Creatio in real time over an authenticated
+    POST, writing a record into a target object named by the EntityName parameter. Contact, Lead, Order
+    and Submitted form are supported out of the box; more objects can be enabled. Secured with OAuth 2.0
+    — configured automatically on cloud instances, manually on-site. Direction is inbound only: Creatio
+    publishes no outbound event catalog.
+  humanURL: >-
+    https://academy.creatio.com/guides/no-code-customization/base-integrations/webhook-service-integration/overview
   baseURL: https://mycreatio.com/
-  x-baseURL-note: Creatio does not publish a fixed webhook path. The URL is generated per object and retrieved
-    from the instance UI ("Get the Webhook URL"), so only the per-instance host is recordable.
+  x-baseURL-note: >-
+    Creatio does not publish a fixed webhook path. The URL is generated per object and retrieved from
+    the instance UI ("Get the Webhook URL"), so only the per-instance host is recordable.
   tags:
   - Webhook
   - Integration
@@ -227,20 +239,77 @@ apis:
   - CRM
   properties:
   - type: Documentation
-    url: https://academy.creatio.com/guides/no-code-customization/base-integrations/webhook-service-integration/overview
+    url: >-
+      https://academy.creatio.com/guides/no-code-customization/base-integrations/webhook-service-integration/overview
   aid: creatio:creatio-webhook-service
-- aid: creatio:creatio-api
-  name: Creatio API
-  description: 'Creatio API as documented publicly: 4 operations. Contract generated from the documentation
-    by API Evangelist (2026-10-04); not
-
-    the provider''s own document.'
-  humanURL: https://academy.creatio.com/docs/developer/integrations_and_api/data_services/odata
-  baseURL: http://mycreatio.com
+- aid: creatio:creatio-clear-bundles-api
+  name: Creatio Clear Bundles API
+  description: The Clear Bundles API from Creatio — 1 operation(s) for clear bundles.
+  humanURL: >-
+    https://academy.creatio.com/docs/developer/integrations_and_api/data_services/odata/overview
+  baseURL: https://mycreatio.com/0/odata
+  tags:
+  - Clear Bundles
   properties:
   - type: OpenAPI
-    url: openapi/_ae-authored/creatio-openapi-generated.yml
-    x-provenance: generated
+    url: openapi/creatio-clear-bundles-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/creatio-post-clear-bundles-request-schema.json
+  - type: JSONSchema
+    url: json-schema/creatio-post-minify-content-request-schema.json
+  - type: JSONSchema
+    url: json-schema/creatio-post0-odata-odataid-request-schema.json
+  - type: JSONSchema
+    url: json-schema/creatio-post0-odata-odataid-response-schema.json
+- aid: creatio:creatio-minify-content-api
+  name: Creatio Minify Content API
+  description: The Minify Content API from Creatio — 1 operation(s) for minify content.
+  humanURL: >-
+    https://academy.creatio.com/docs/developer/integrations_and_api/data_services/odata/overview
+  baseURL: https://mycreatio.com/0/odata
+  tags:
+  - Minify Content
+  properties:
+  - type: OpenAPI
+    url: openapi/creatio-minify-content-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/creatio-post-clear-bundles-request-schema.json
+  - type: JSONSchema
+    url: json-schema/creatio-post-minify-content-request-schema.json
+  - type: JSONSchema
+    url: json-schema/creatio-post0-odata-odataid-request-schema.json
+  - type: JSONSchema
+    url: json-schema/creatio-post0-odata-odataid-response-schema.json
+- aid: creatio:creatio-odata-api
+  name: Creatio Odata API
+  description: The Odata API from Creatio — 1 operation(s) for odata.
+  humanURL: >-
+    https://academy.creatio.com/docs/developer/integrations_and_api/data_services/odata/overview
+  baseURL: https://mycreatio.com/0/odata
+  tags:
+  - Odata
+  properties:
+  - type: OpenAPI
+    url: openapi/creatio-odata-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/creatio-post-clear-bundles-request-schema.json
+  - type: JSONSchema
+    url: json-schema/creatio-post-minify-content-request-schema.json
+  - type: JSONSchema
+    url: json-schema/creatio-post0-odata-odataid-request-schema.json
+  - type: JSONSchema
+    url: json-schema/creatio-post0-odata-odataid-response-schema.json
+- aid: creatio:creatio-process-content-api
+  name: Creatio Process Content API
+  description: The Process Content API from Creatio — 1 operation(s) for process content.
+  humanURL: >-
+    https://academy.creatio.com/docs/developer/integrations_and_api/data_services/odata/overview
+  baseURL: https://mycreatio.com/0/odata
+  tags:
+  - Process Content
+  properties:
+  - type: OpenAPI
+    url: openapi/creatio-process-content-api-openapi.yml
   - type: JSONSchema
     url: json-schema/creatio-post-clear-bundles-request-schema.json
   - type: JSONSchema

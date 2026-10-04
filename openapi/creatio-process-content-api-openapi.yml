@@ -1,0 +1,37 @@
+openapi: 3.2.0
+info:
+  title: Creatio Process Content API
+  version: '2026-10-04'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-04: 4 operation(s) read from 3 public documentation page(s) (each operation names its page in x-source). This is not the provider''s published contract; Creatio has published no machine-readable contract that the pipeline could find. Engine: local.'
+  x-evidence-tiers:
+    code-example: 0
+    documentation: 4
+    pages-with-code: 0
+    pages-read: 3
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-04'
+  x-generator: generate-contract-from-docs.py
+  x-engine: local
+  x-sources:
+  - https://academy.creatio.com/docs/developer/integrations_and_api/data_services/odata
+  - https://academy.creatio.com/docs/developer/integrations_and_api/data_services/odata/overview
+  - https://academy.creatio.com/docs/developer/application_components/static_content_bundling
+servers:
+- url: http://mycreatio.com
+tags:
+- name: Process Content
+paths:
+  /process-content:
+    get:
+      operationId: get_process_content
+      tags:
+      - Process Content
+      summary: Primary endpoint.
+      x-source: https://academy.creatio.com/docs/developer/application_components/static_content_bundling
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: documentation
