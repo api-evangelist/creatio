@@ -1,6 +1,7 @@
 generated: '2026-08-13'
 method: searched
 source: https://www.creatio.com/products/pricing/compare-platform-plans
+name: Creatio API Plans
 docs:
   pricing: https://www.creatio.com/products/pricing
   platform_plans: https://www.creatio.com/products/pricing/compare-platform-plans

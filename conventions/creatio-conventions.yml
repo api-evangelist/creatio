@@ -49,6 +49,7 @@ limits:
 versioning:
   see: lifecycle/creatio-lifecycle.yml
 idempotency:
+  coverage: none
   supported: false
   header: null
   note: >-

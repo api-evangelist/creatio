@@ -1,0 +1,159 @@
+generated: '2026-10-04'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 12
+  own: 10
+  other_domain: 2
+  platform: 0
+  roles:
+  - api
+  - other
+  - portal
+  - support
+  - website
+hosts:
+- host: academy.creatio.com
+  found_by:
+  - pointer
+  - apis[]
+  - probed
+  - site-links
+  - docs-index
+  - contract-discovery
+  - well-known
+  types:
+  - DeveloperPortal
+  - Documentation
+  - APIReference
+  - GettingStarted
+  serves:
+  - docs
+  registrable_domain: creatio.com
+  role: portal
+  relation: own
+- host: api.creatio.com
+  found_by:
+  - contract-discovery
+  types: []
+  serves: []
+  registrable_domain: creatio.com
+  role: api
+  relation: own
+- host: api.mycreatio.com
+  found_by:
+  - contract-discovery
+  types: []
+  serves: []
+  registrable_domain: mycreatio.com
+  role: api
+  relation: other-domain
+- host: app.creatio.com
+  found_by:
+  - probed
+  - site-links
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: creatio.com
+  role: other
+  relation: own
+- host: community.creatio.com
+  found_by:
+  - pointer
+  - probed
+  - site-links
+  - contract-discovery
+  - well-known
+  types:
+  - Support
+  - Community
+  serves: []
+  registrable_domain: creatio.com
+  role: support
+  relation: own
+- host: creatio.com
+  found_by:
+  - probed
+  - site-links
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: creatio.com
+  role: other
+  relation: own
+- host: marketplace.creatio.com
+  found_by:
+  - pointer
+  - probed
+  - site-links
+  - well-known
+  types:
+  - Marketplace
+  serves: []
+  registrable_domain: creatio.com
+  role: other
+  relation: own
+- host: mycreatio.com
+  found_by:
+  - apis[]
+  - probed
+  - contract-discovery
+  - well-known
+  types: []
+  serves:
+  - api
+  registrable_domain: mycreatio.com
+  role: other
+  relation: other-domain
+- host: profile.creatio.com
+  found_by:
+  - docs-index
+  types: []
+  serves:
+  - docs
+  registrable_domain: creatio.com
+  role: other
+  relation: own
+- host: success.creatio.com
+  found_by:
+  - probed
+  - site-links
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: creatio.com
+  role: other
+  relation: own
+- host: vn.creatio.com
+  found_by:
+  - probed
+  - site-links
+  types: []
+  serves: []
+  registrable_domain: creatio.com
+  role: other
+  relation: own
+- host: www.creatio.com
+  found_by:
+  - pointer
+  - probed
+  - well-known
+  - vendor-detect
+  types:
+  - Security
+  - Newsroom
+  - Website
+  - HelpCenter
+  - Blog
+  - Pricing
+  - SignUp
+  - TermsOfService
+  - PrivacyPolicy
+  serves:
+  - cdn
+  vendor: imperva
+  registrable_domain: creatio.com
+  role: website
+  relation: own

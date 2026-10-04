@@ -1,0 +1,25 @@
+generated: '2026-10-04'
+method: probed
+source: https://www.creatio.com/privacy-policy
+signals:
+  data_subject_request:
+    evidence:
+      source: https://www.creatio.com/privacy-policy
+      http_status: 200
+      fetched: true
+      quote: "PRIVACY POLICY, effective as of September 7, 2022 CREATIO (“we”, “us”, “ Creatio”, “our” or “the Company”) is committed to protecting the privacy of Data subjects (“you”)."
+    note: The policy states commitment to protecting data subjects and implies rights to request access, correction, deletion.
+  data_retention:
+    evidence:
+      - source: https://www.creatio.com/privacy-policy
+        http_status: 200
+        fetched: "true"
+        quote: "To the extent permitted by applicable law, we may retain information for as long as the account of the User for whom we collected the information is active, for at least six (6) months thereafter, or as long as is reasonably necessary to provide the Creatio Services or as needed for other lawful purposes."
+    note: Describes retention period for user data.
+  notice_and_action:
+    evidence:
+      source: https://www.creatio.com/privacy-policy
+      http_status: 200
+      fetched: true
+      quote: "Please note that the use of online tracking mechanisms by third parties, such as our Partners, is subject to those third parties’ own privacy policies, and not this Privacy Policy."
+    note: Provides notice about third‑party tracking and directs users to external policies.

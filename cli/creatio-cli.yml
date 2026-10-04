@@ -1,5 +1,7 @@
 generated: '2026-08-13'
 method: searched
+install: []
+commands: []
 source: https://www.nuget.org/packages/clio
 summary: >-
   Creatio publishes NO first-party CLI. The de-facto command-line tool for the

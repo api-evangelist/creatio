@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/creatio/main/json-schema/creatio-post0-odata-odataid-response-schema.json",
+  "title": "Post0OdataOdataidResponse",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/_ae-authored/creatio-openapi-generated.yml#/components/schemas/Post0OdataOdataidResponse",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "string"
+    },
+    "Name": {
+      "type": "string"
+    }
+  }
+}

@@ -1,6 +1,7 @@
 generated: '2026-08-13'
 method: searched
 source: https://www.creatio.com/products/pricing/compare-platform-plans
+name: Creatio API Rate Limits
 docs:
   plan_quotas: https://www.creatio.com/products/pricing/compare-platform-plans
   odata_limits: https://academy.creatio.com/docs/developer/integrations_and_api/data_services/odata/overview
