@@ -55,7 +55,7 @@ tags:
 - No-Code
 - Low-Code
 - Business Process Management
-- Workflow-Automation
+- Workflow Automation
 - Sales
 - Marketing
 - Customer Service
@@ -74,6 +74,7 @@ tags_raw:
 - Customer Service
 - OData
 - AI Agents
+- Workflow-Automation
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -128,13 +129,14 @@ apis:
     https://<your-instance>.creatio.com/0/ServiceModel/ProcessEngineService.svc.
     mycreatio.com is Creatio's own documentation example host.
   tags:
-  - Workflow-Automation
+  - Workflow Automation
   - Business Process Management
   - REST
   tags_raw:
   - Workflow Automation
   - Business Process Management
   - REST
+  - Workflow-Automation
   properties:
   - type: Documentation
     url: https://academy.creatio.com/docs/developer/integrations_and_api/business_process_service
