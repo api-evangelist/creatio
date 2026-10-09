@@ -103,3 +103,28 @@ trial:
     Creatio offers a time-limited free trial of the product, not a permanent
     free tier and not a developer sandbox with test credentials. See
     https://www.creatio.com/legal for the free-trial terms.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - negotiated
+  units: []
+  plans:
+  - name: Growth
+    access: other
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Enterprise
+    access: other
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Unlimited
+    access: other
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
