@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/creatio/integrations
+- https://n8n.io/integrations/creatio/
+- https://composio.dev/toolkits/creatio
+- https://monid.ai/tools/creatio
+checked:
+- https://composio.dev/toolkits/creatio
+- https://monid.ai/tools/creatio
+- https://n8n.io/integrations/creatio/
+- https://zapier.com/apps/creatio/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
